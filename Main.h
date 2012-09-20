@@ -8,6 +8,9 @@
 
 using namespace std;
 
+Stack stack;
+
+
 int  main(int argc, char** argv) {
 
 	if(argc < 2 ){
@@ -16,7 +19,7 @@ int  main(int argc, char** argv) {
 		
 	}
 	
-	Stack stack = new Stack();
+
 	string input; // char [] ???
 
 	cout << "O que deseja fazer ? "; //certo?
