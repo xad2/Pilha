@@ -9,6 +9,9 @@
 #define STACK_H_
 
 #define MAXSTACK 30
+#define FULLSTACK_ERROR '\O'
+#define EMPTYSTACK_ERROR '\O'
+
 
 typedef struct {
 	int data[MAXSTACK];
