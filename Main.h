@@ -8,8 +8,14 @@
 
 using namespace std;
 
-int  main() {
+int  main(int argc, char** argv) {
 
+	if(argc < 2 ){
+		
+	}else{
+		
+	}
+	
 	Stack stack = new Stack();
 	string input; // char [] ???
 
