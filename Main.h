@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int Main() {
+int  main() {
 
 	Stack stack = new Stack();
 	string input;
