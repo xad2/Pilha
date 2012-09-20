@@ -31,7 +31,7 @@ int  main(int argc, char** argv) {
 		stack.initializeStack();
 		break;
 	case "INSERIR":
-		int inputSize = strlen(input); 
+		
 		break;
 
 	}
