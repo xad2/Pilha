@@ -11,9 +11,9 @@ using namespace std;
 int  main() {
 
 	Stack stack = new Stack();
-	string input;
+	string input; // char [] ???
 
-	cout << "O que deseja fazer ";
+	cout << "O que deseja fazer ? "; //certo?
 	cin >> input;
 
 	switch (input) {
@@ -24,7 +24,7 @@ int  main() {
 		stack.initializeStack();
 		break;
 	case "INSERIR":
-		int inputSize = strlen(input);
+		int inputSize = strlen(input); 
 		break;
 
 	}
