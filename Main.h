@@ -1,5 +1,5 @@
 /*
- * Main.h
+ * Main.h fazer Main.cc
  *
  *  Created on: Sep 19, 2012
  *      Author: xad
