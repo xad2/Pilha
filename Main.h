@@ -15,7 +15,8 @@ int  main() {
 
 	cout << "O que deseja fazer ? "; //certo?
 	cin >> input;
-
+	cout << endl;
+	
 	switch (input) {
 	case "CRIAR":
 		stack.initializeStack();
