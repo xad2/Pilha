@@ -1,5 +1,5 @@
 /*
- * Main.h
+ * Main.h fazer Main.cc
  *
  *  Created on: Sep 19, 2012
  *      Author: xad
@@ -8,14 +8,24 @@
 
 using namespace std;
 
-int Main() {
+Stack stack;
 
-	Stack stack = new Stack();
-	string input;
 
-	cout << "O que deseja fazer ";
+int  main(int argc, char** argv) {
+
+	if(argc < 2 ){
+		
+	}else{
+		
+	}
+	
+
+	string input; // char [] ???
+
+	cout << "O que deseja fazer ? "; //certo?
 	cin >> input;
-
+	cout << endl;
+	
 	switch (input) {
 	case "CRIAR":
 		stack.initializeStack();
@@ -24,7 +34,7 @@ int Main() {
 		stack.initializeStack();
 		break;
 	case "INSERIR":
-		int inputSize = strlen(input);
+		
 		break;
 
 	}
