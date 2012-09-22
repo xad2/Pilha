@@ -5,29 +5,29 @@
  *      Author: xad
  */
 
-#ifndef STACK_H_
-#define STACK_H_
+#ifndef _STACK_H_
+#define _STACK_H_
 
 #define MAXSTACK 30
-
-typedef struct {
-	int data[MAXSTACK];
-	int top;
-} STACK;
-
-STACK myStack;
+#define FULLSTACK_ERROR '\0'
+#define EMPTYSTACK_ERROR '\0'
 
 class Stack {
+
+private:
+	int data[MAXSTACK];
+	int top;
+
 public:
 
 	Stack();
-	virtual ~Stack();
+	~Stack();
 
 	void initializeStack();
 	bool fullStack(), emptyStack();
-	int push(int newElement), remove();
-	char showElements();
+	int push(int newElement), remove(), getTopElement(), currentTop();
+
 
 };
 
-#endif /* STACK_H_ */
+#endif /* _STACK_H_ */

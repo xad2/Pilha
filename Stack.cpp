@@ -7,8 +7,8 @@
 
 #include "Stack.h"
 
-Stack::Stack() {
 
+Stack::Stack() {
 	initializeStack();
 }
 
@@ -17,12 +17,13 @@ Stack::~Stack() {
 }
 
 void Stack::initializeStack() {
-	myStack.top = -1;
+	top = -1;
+
 }
 
 bool Stack::fullStack() {
 
-	if (MAXSTACK == myStack.top + 1) {
+	if (MAXSTACK == top + 1) {
 		return true;
 	}
 
@@ -32,7 +33,7 @@ bool Stack::fullStack() {
 
 bool Stack::emptyStack() {
 
-	if (-1 == myStack.top) {
+	if (-1 == top) {
 		return true;
 	}
 
@@ -43,33 +44,32 @@ bool Stack::emptyStack() {
 int Stack::push(int newElement) {
 
 	if (fullStack()) {
-		return "";
+		return FULLSTACK_ERROR;
 	}
 
-	myStack.top++;
-	myStack.data[myStack.top] = newElement;
-	return (myStack.top);
+	top++;
+
+	data[top] = newElement;
+	return (top);
 
 }
 
 int Stack::remove() {
 	if (emptyStack()) {
-		return "";
+		return EMPTYSTACK_ERROR;
 	}
-	myStack.top--;
-	return myStack.top;
+	top--;
+	return top;
 
 }
 
-char Stack::showElements() {
-
-	char elements = "";
-	for (int i = myStack.top + 1; i > 0; i--) {
-		elements = myStack.data[i-1] >> "\n";
-	}
-
-	return elements;
-
+int Stack::getTopElement() {
+	return data[top];
 }
 
+int Stack::currentTop(){
+
+	return top;
+
+}
 
