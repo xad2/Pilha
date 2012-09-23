@@ -46,9 +46,7 @@ int Stack::push(int newElement) {
 	if (fullStack()) {
 		return FULLSTACK_ERROR;
 	}
-
 	top++;
-
 	dataStorage[top] = newElement;
 	return (top);
 
@@ -63,8 +61,13 @@ int Stack::remove() {
 
 }
 
-int Stack::getTopElement() {
-	return dataStorage[top];
+int Stack::getElement(int pos) {
+
+	if(emptyStack()){
+		return EMPTYSTACK_ERROR;
+	}
+
+	return dataStorage[pos];
 }
 
 int Stack::currentTop(){
