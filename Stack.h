@@ -9,10 +9,8 @@
 #define _STACK_H_
 
 #define MAXSTACK 30
-
 #define FULLSTACK_ERROR '\0'
 #define EMPTYSTACK_ERROR '\0'
-
 
 class Stack {
 
@@ -28,7 +26,6 @@ public:
 	void initializeStack();
 	bool fullStack(), emptyStack();
 	int push(int newElement), remove(), getTopElement(), currentTop();
-
 
 };
 
