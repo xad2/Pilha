@@ -37,8 +37,8 @@ int main(int argc, char** argv) {
 
 		} else if (command == "INSERIR") {
 			int number;
-			stringstream stream2;
-			stream2 >> number;
+
+			stream >> number;
 
 			for (int i = 0; i < number; i++) {
 				file.getline(line, 256);
