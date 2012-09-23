@@ -9,7 +9,7 @@
 
 
 Stack::Stack() {
-	initializeStack();
+
 }
 
 Stack::~Stack() {

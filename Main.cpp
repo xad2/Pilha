@@ -17,36 +17,10 @@ using namespace std;
 
 Stack stack;
 string input;
-string numberInput;
-
-int convert(string str) {
-	int quantidade;
-	stringstream ss;
-	ss << str;
-	ss >> quantidade;
-	ss.str("");
-	ss.clear();
-	return quantidade;
-}
-
-void menu() {
-
-	bool isOn = true;
-	while (isOn) {
-
-		cin >> input;
-
-	}
-}
-
-void lerCasoDeTestes(char* argv) {
-
-}
 
 int main(int argc, char** argv) {
 
 	ifstream file(argv[1]);
-
 	char line[256];
 
 	while (!file.eof()) {
@@ -63,32 +37,29 @@ int main(int argc, char** argv) {
 
 		} else if (command == "INSERIR") {
 			int number;
-			stream >> number;
+			stringstream stream2;
+			stream2 >> number;
 
-			for(int i = 0; i < number; i++){
+			for (int i = 0; i < number; i++) {
 				file.getline(line, 256);
 				stringstream stream(line);
-				int element;
+				char element;
 				stream >> element;
 				stack.push(element);
 			}
 
 		} else if (command == "MOSTRAR") {
 
-			for(int i = stack.currentTop(); i > 0; i-- ){
-				printf("%c", stack.getTopElement());
+			for (int i = stack.currentTop(); i >= 0; i--) {
+				cout << stack.getTopElement() << endl;
 			}
 
 		} else if (command == "SAIR") {
+			file.close();
 			break;
 		}
 
 	}
-//	if (argc < 2) {
-//		menu();
-//	} else {
-//		lerCasoDeTestes(argv[1]);
-//	}
 
 }
 

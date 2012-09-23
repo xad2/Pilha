@@ -9,14 +9,10 @@
 #define _STACK_H_
 
 #define MAXSTACK 30
-<<<<<<< HEAD
+
 #define FULLSTACK_ERROR '\0'
 #define EMPTYSTACK_ERROR '\0'
-=======
-#define FULLSTACK_ERROR '\O'
-#define EMPTYSTACK_ERROR '\O'
 
->>>>>>> 83cfb8f2cec1e4d9a22c304fb56cfac9b0d15ce7
 
 class Stack {
 
