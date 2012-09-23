@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
 			for (int i = 0; i < number; i++) {
 				file.getline(line, 256);
 				stringstream stream(line);
-				char element;
+				int element;
 				stream >> element;
 				stack.push(element);
 			}

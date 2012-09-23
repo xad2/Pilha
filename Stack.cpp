@@ -23,7 +23,7 @@ void Stack::initializeStack() {
 
 bool Stack::fullStack() {
 
-	if (MAXSTACK == top + 1) {
+	if (MAXSTACK == (top + 1)) {
 		return true;
 	}
 
