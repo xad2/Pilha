@@ -49,7 +49,7 @@ int Stack::push(int newElement) {
 
 	top++;
 
-	data[top] = newElement;
+	dataStorage[top] = newElement;
 	return (top);
 
 }
@@ -64,7 +64,7 @@ int Stack::remove() {
 }
 
 int Stack::getTopElement() {
-	return data[top];
+	return dataStorage[top];
 }
 
 int Stack::currentTop(){

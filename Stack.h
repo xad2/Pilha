@@ -15,7 +15,7 @@
 class Stack {
 
 private:
-	int data[MAXSTACK];
+	int dataStorage[MAXSTACK];
 	int top;
 
 public:
