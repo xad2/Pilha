@@ -8,7 +8,9 @@
 #include "Stack.h"
 
 
-Stack::Stack() {
+Stack::Stack()
+	: top(-1)
+{
 
 }
 
@@ -21,7 +23,7 @@ void Stack::initializeStack() {
 
 }
 
-bool Stack::fullStack() {
+bool Stack::fullStack() const {
 
 	if (MAXSTACK == (top + 1)) {
 		return true;
@@ -31,7 +33,7 @@ bool Stack::fullStack() {
 
 }
 
-bool Stack::emptyStack() {
+bool Stack::emptyStack() const {
 
 	if (-1 == top) {
 		return true;
@@ -61,7 +63,7 @@ int Stack::remove() {
 
 }
 
-int Stack::getElement(int pos) {
+int Stack::getElement(int pos) const {
 
 	if(emptyStack()){
 		return EMPTYSTACK_ERROR;
@@ -70,7 +72,7 @@ int Stack::getElement(int pos) {
 	return dataStorage[pos];
 }
 
-int Stack::currentTop(){
+int Stack::currentTop() const {
 
 	return top;
 
