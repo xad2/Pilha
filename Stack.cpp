@@ -23,7 +23,7 @@ void Stack::initializeStack() {
 
 }
 
-bool Stack::fullStack() const {
+bool Stack::isFull() const {
 
 	if (MAXSTACK == (top + 1)) {
 		return true;
@@ -33,7 +33,7 @@ bool Stack::fullStack() const {
 
 }
 
-bool Stack::emptyStack() const {
+bool Stack::isEmpty() const {
 
 	if (-1 == top) {
 		return true;
@@ -45,7 +45,7 @@ bool Stack::emptyStack() const {
 
 int Stack::push(int newElement) {
 
-	if (fullStack()) {
+	if (isFull()) {
 		return FULLSTACK_ERROR;
 	}
 	top++;
@@ -55,7 +55,7 @@ int Stack::push(int newElement) {
 }
 
 int Stack::remove() {
-	if (emptyStack()) {
+	if (isEmpty()) {
 		return EMPTYSTACK_ERROR;
 	}
 	top--;
@@ -65,7 +65,7 @@ int Stack::remove() {
 
 int Stack::getElement(int pos) const {
 
-	if(emptyStack()){
+	if(isEmpty()){
 		return EMPTYSTACK_ERROR;
 	}
 

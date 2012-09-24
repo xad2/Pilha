@@ -24,8 +24,8 @@ public:
 	~Stack();
 
 	void initializeStack();
-	bool fullStack() const;
-	bool emptyStack() const;
+	bool isFull() const;
+	bool isEmpty() const;
 	int push(int newElement);
 	int remove();
 	int getElement(int pos) const;
