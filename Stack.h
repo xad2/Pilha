@@ -2,12 +2,13 @@
  * Stack.h
  *
  *  Created on: Sep 19, 2012
- *      Author: xad
+ *      Author: Alexandre and Tao
  */
 
 #ifndef _STACK_H_
 #define _STACK_H_
 
+//Definition of MAXIMUM STACK (MAXPILHA) and errors.
 #define MAXSTACK 30
 #define FULLSTACK_ERROR -2
 #define EMPTYSTACK_ERROR -1
