@@ -20,9 +20,9 @@ static const char REMOVE_STR[] = "Remover";
 static const char SHOW_STR[] = "Mostrar";
 static const char EXIT_STR[] = "Sair";
 static const char HELP_STR[] = "Ajuda";
+static const char EMPTY_STR[] = "Pilha Vazia.";
 
-static void commandInsert(std::istream &stream, std::istream &file,
-		Stack &stack) {
+static void commandInsert(std::istream &stream, std::istream &file, Stack &stack) {
 	int number;
 	stream >> number;
 
@@ -37,10 +37,15 @@ static void commandInsert(std::istream &stream, std::istream &file,
 	}
 }
 
-static void commandShow(Stack &stack) {
+static void commandShow(Stack &stack, std::ostream &output) {
+
+	if (stack.isEmpty()) {
+		output << EMPTY_STR << std::endl;
+		return;
+	}
 
 	for (int i = stack.currentTop(); i >= 0; i--) {
-		printf("%d \n", stack.getElement(i));
+		output << stack.getElement(i) << std::endl;
 	}
 
 }
@@ -124,7 +129,7 @@ static void interactiveExecute(Stack &stack) {
 						printEmptyStack();
 					}
 				} else if (strcasecmp(subCommand.c_str(), SHOW_STR) == 0) {
-					commandShow(stack);
+					commandShow(stack, std::cout);
 				} else {
 					printError(command);
 				}
@@ -138,12 +143,11 @@ static void interactiveExecute(Stack &stack) {
 	}
 }
 
-static void executeFromFile(Stack &stack, const std::string &filename) {
-	std::ifstream file(filename.c_str());
+static void executeFromFile(Stack &stack, std::istream &input, std::ostream &output) {
 	std::string line;
 
 	//While file is not finished
-	while (std::getline(file, line)) {
+	while (std::getline(input, line)) {
 		std::stringstream stream(line);
 		std::string command = line;
 		stream >> command;
@@ -151,17 +155,70 @@ static void executeFromFile(Stack &stack, const std::string &filename) {
 		if (command == "CRIAR") {
 			stack.initializeStack();
 		} else if (command == "INSERIR") {
-			commandInsert(stream, file, stack);
+			commandInsert(stream, input, stack);
 		} else if (command == "REMOVER") {
 			stack.remove();
 		} else if (command == "MOSTRAR") {
-			commandShow(stack);
+			commandShow(stack, output);
 
 		} else if (command == "SAIR") {
-			file.close();
 			break;
 		}
 	}
+}
+
+static void executeFromFile(Stack &stack, const std::string &filename) {
+	std::ifstream file(filename.c_str());
+	executeFromFile(stack, file, std::cout);
+}
+
+static void runTestCases() {
+	static const char* inputFiles[] = { "test_data/Caso1.in",
+			"test_data/Caso2.in", "test_data/Caso3.in",
+			"test_data/PilhaCheia.in", "test_data/PilhaVazia.in" };
+
+	int nfiles = sizeof(inputFiles) / sizeof(inputFiles[0]);
+
+	for (int i = 0; i < nfiles; ++i)
+	{
+		Stack stack;
+
+		std::ifstream inputData(inputFiles[i]);
+		if (!inputData)
+		{
+			std::cerr << "Não pude abrir " << inputFiles[i] << std::endl;
+			continue;
+		}
+
+		std::cout << "Testing file: " << inputFiles[i];
+
+		std::string expectedDataFilename = inputFiles[i];
+		std::string::size_type pos = expectedDataFilename.find_first_of(".in", 0);
+		expectedDataFilename.replace(pos, pos + 3, ".out");
+		std::ifstream expectedData(expectedDataFilename.c_str());
+
+		std::stringstream resultData;
+
+		executeFromFile(stack, inputData, resultData);
+
+		std::string expectedBuffer, resultBuffer;
+		while (std::getline(expectedData, expectedBuffer))
+		{
+			if (!std::getline(resultData, resultBuffer)) {
+				std::cout << "\tERRO; expected: " << expectedBuffer << ", result: [empty]" << std::endl;
+				break;
+			}
+
+			if (expectedBuffer != resultBuffer) {
+				std::cout << "\tERRO; expected: " << expectedBuffer << ", result: " << resultBuffer << std::endl;
+				break;
+			}
+		}
+
+		std::cout << "\tOK!" << std::endl;
+
+	}
+
 }
 
 int main(int argc, char** argv) {
@@ -170,7 +227,11 @@ int main(int argc, char** argv) {
 	if (argc < 2) {
 		interactiveExecute(stack);
 	} else {
-		executeFromFile(stack, argv[1]);
+		if (strcasecmp(argv[1], "--test") == 0) {
+			runTestCases();
+		} else {
+			executeFromFile(stack, argv[1]);
+		}
 	}
 }
 
